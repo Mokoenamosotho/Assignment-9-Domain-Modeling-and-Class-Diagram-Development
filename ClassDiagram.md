@@ -10,8 +10,7 @@ class User {
   -email: String
   -role: String
   +login(): Boolean
-  +receiveNotification(msg: String): void
-}
+  +receiveNotification(msg: String): void }
 
 class Database {
   -dbId: String
@@ -20,8 +19,7 @@ class Database {
   -lastBackupTime: Date
   -location: String
   +getStatus(): String
-  +updateStatus(status: String): void
-}
+  +updateStatus(status: String): void}
 
 class Backup {
   -backupId: String
@@ -30,8 +28,7 @@ class Backup {
   -storageLocation: String
   -isEncrypted: Boolean
   +createBackup(): Boolean
-  +encryptBackup(): void
-}
+  +encryptBackup(): void}
 
 class Recovery {
   -recoveryId: String
@@ -39,8 +36,7 @@ class Recovery {
   -startTime: Date
   -endTime: Date
   +initiateRecovery(): Boolean
-  +cancelRecovery(): void
-}
+  +cancelRecovery(): void}
 
 class AIModel {
   -modelId: String
@@ -48,8 +44,7 @@ class AIModel {
   -lastUpdated: Date
   +predictFailure(db: Database): Boolean
   +detectAnomaly(db: Database): Boolean
-  +updateModel(): void
-}
+  +updateModel(): void}
 
 class AuditLog {
   -logId: String
@@ -65,10 +60,10 @@ class ComplianceReport {
   -generatedDate: Date
   -contentSummary: String
   +generateReport(): void
-  +exportPDF(): File
-}
+  +exportPDF(): File}
 
 %% Relationships
+
 User "1" --> "0..*" Recovery : initiates
 User "1" --> "0..*" AuditLog : logsAction
 Database "1" --> "0..*" Backup : has
